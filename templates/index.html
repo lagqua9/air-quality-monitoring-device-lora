@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Dữ liệu nhận từ ESP</h1>
+    <table border="1">
+        <tr><th>ID</th><th>Tên</th><th>Giá trị</th></tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script src="{{ url_for('static', filename='javascrift.js') }}"></script>
+</body>
+</html>
