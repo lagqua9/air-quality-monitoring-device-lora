@@ -3,10 +3,15 @@
 <head>
     <title>ESP Data</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='node_modules/echarts/dist/echarts.min.js') }}">// biểu đồ sẽ khai báo ở đây</script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.7.2-web/css/all.css') }}">
+    <!-- file icon -->
 </head>
 <body>
-    <h1>Dữ liệu nhận từ ESP</h1>
-    <table border="1">
+    <h1 style="text-align: center;">Hệ thống giám sát chất lượng không khí</h1>
+    <input id="seach_node" type="text" placeholder="bạn cần tìm node?">
+    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    <!-- <table border="1">
         <tr><th>ID</th><th>Tên</th><th>Giá trị</th></tr>
         {% for row in data %}
         <tr>
@@ -15,8 +20,8 @@
             <td>{{ row[2] }}</td>
         </tr>
         {% endfor %}
-    </table>
-
+    </table> -->
+    
     <script src="{{ url_for('static', filename='javascrift.js') }}"></script>
 </body>
 </html>

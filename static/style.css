@@ -1,0 +1,12 @@
+body {
+    background-color: #fff;
+    color: black;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+#seach_node{
+    width: -webkit-fill-available;
+    height: 87px;
+}
