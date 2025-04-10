@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>ESP Data</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='node_modules/echarts/dist/echarts.min.js') }}">// biểu đồ sẽ khai báo ở đây</script>
+    <script
+        src="{{ url_for('static', filename='node_modules/echarts/dist/echarts.min.js') }}">// biểu đồ sẽ khai báo ở đây</script>
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.7.2-web/css/all.css') }}">
     <!-- file icon -->
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
+
 <body>
     <h1 style="text-align: center;">Hệ thống giám sát chất lượng không khí</h1>
     <input id="seach_node" type="text" placeholder="bạn cần tìm node?">
     <button><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    <div id="map"></div>
+
     <!-- <table border="1">
         <tr><th>ID</th><th>Tên</th><th>Giá trị</th></tr>
         {% for row in data %}
@@ -21,7 +31,7 @@
         </tr>
         {% endfor %}
     </table> -->
-    
     <script src="{{ url_for('static', filename='javascrift.js') }}"></script>
 </body>
+
 </html>
