@@ -11,3 +11,17 @@
  //     .addTo(map)
  //     .bindPopup('Vị trí trạm đo không khí')
  //     .openPopup();
+
+navigator.geolocation.getCurrentPosition(function(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    // Gửi vị trí lên server Flask
+    fetch('/send_location', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ latitude: lat, longitude: lon })
+    });
+});

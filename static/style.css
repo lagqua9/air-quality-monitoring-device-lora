@@ -20,7 +20,13 @@ html {
     padding: 5px 10px; /* khoảng cách bên trong input */
 }
 #map {
-    height: 500px;
+    height: 250px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    margin: 20px auto;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    z-index: 100;
 }
