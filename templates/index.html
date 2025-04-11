@@ -16,21 +16,17 @@
 
 <body>
     <h1 style="text-align: center;">Hệ thống giám sát chất lượng không khí</h1>
-    <input id="seach_node" type="text" placeholder="bạn cần tìm node?">
-    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    <div class="seach">
+        <input class="seach_node" type="text" placeholder="bạn cần tìm node?">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+
+    <button onclick="window.location.href='/login'">Đi đến trang quản lý</button>
+
 
     <div id="map"></div>
-
-    <!-- <table border="1">
-        <tr><th>ID</th><th>Tên</th><th>Giá trị</th></tr>
-        {% for row in data %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-        </tr>
-        {% endfor %}
-    </table> -->
     <script src="{{ url_for('static', filename='javascrift.js') }}"></script>
 </body>
 

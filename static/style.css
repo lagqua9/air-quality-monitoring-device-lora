@@ -7,13 +7,20 @@ html {
     scroll-behavior: smooth;
 }
 
-#seach_node {
-    width: -webkit-fill-available;
-    height: 87px;
+.sheach{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.seach_node{
+    width: 95%;      /* chiều rộng */
+    height: 40px;      /* chiều cao */
+    font-size: 16px;   /* cỡ chữ */
+    padding: 5px 10px; /* khoảng cách bên trong input */
+}
 #map {
-    height: 450px;
+    height: 500px;
     width: 100%;
     margin: 20px auto;
 }
