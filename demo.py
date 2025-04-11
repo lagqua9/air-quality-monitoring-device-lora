@@ -29,7 +29,7 @@ def get_nodes():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    cursor.execute("SELECT ID, LOCATION, TIME, DATE FROM nodes")#thêm dữ liệu cột
+    cursor.execute("SELECT ID, LOCATION, TIME, DATE, LAT, LONG FROM nodes")#thêm dữ liệu cột
     rows = cursor.fetchall()
     conn.close()
 
@@ -40,7 +40,9 @@ def get_nodes():
             'id': row[0],
             'location': row[1],
             'time': row[2],
-            'date': row[3]
+            'date': row[3],
+            'lat': row[4],
+            'long': row[5]
             #thêm một cột nx ở đây
         })
 
@@ -62,12 +64,16 @@ def update_node(id):
     data = request.get_json()
     location = data.get('location')
     time = data.get('time')
+    date = data.get('date')
+    lat = data.get('lat')
+    long = data.get('long')
+
 
     row = query_db("SELECT * FROM nodes WHERE ID = ?", (id,), one=True)
     if not row:
         return jsonify({'error': 'Node not found'}), 404
 
-    query_db("UPDATE nodes SET LOCATION = ?, TIME = ? WHERE ID = ?", (location, time, id))
+    query_db("UPDATE nodes SET LOCATION = ?, TIME = ?, DATE = ?, LAT = ?, LONG = ? WHERE ID = ?", (location, time, id, date, lat, long))
     return jsonify({'message': 'Node updated'})
 #
 #hàm POST
@@ -77,13 +83,15 @@ def create_node():
     location = data.get('location')
     time = data.get('time')
     date = data.get('date')
+    lat = data.get('lat')
+    long = data.get('long')
 
     if not location or not time or not date:
         return jsonify({'error': 'Missing data'}), 400
 
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO nodes (LOCATION, TIME, DATE) VALUES (?, ?, ?)", (location, time, date))
+    cursor.execute("INSERT INTO nodes (LOCATION, TIME, DATE, LAT, LONG) VALUES (?, ?, ?, ?, ?)", (location, time, date, lat, long))
     conn.commit()
     conn.close()
 
