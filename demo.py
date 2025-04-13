@@ -30,8 +30,6 @@ def get_node_sensor():
             'SLAVE_ID': row['SLAVE_ID'],
             'NODE_ID': row['NODE_ID'],
             'IP': row['IP'],
-            'LAT': row['LAT'],
-            'LONG': row['LONG'],
             'TEMP': row['TEMP'],
             'HUMI': row['HUMI'],
             'CO': row['CO'],
@@ -55,10 +53,9 @@ def create_node_sensor():
     cursor = conn.cursor()
     
     cursor.execute('''
-        INSERT INTO node_sensor (SLAVE_ID, NODE_ID, IP, LAT, LONG, TEMP, HUMI, CO, PM2_5, TIME_S, DATE_S)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', 
-        (new_sensor['SLAVE_ID'], new_sensor['NODE_ID'], new_sensor['IP'], new_sensor['LAT'], 
-         new_sensor['LONG'], new_sensor['TEMP'], new_sensor['HUMI'], new_sensor['CO'], 
+        INSERT INTO node_sensor (SLAVE_ID, NODE_ID, IP, TEMP, HUMI, CO, PM2_5, TIME_S, DATE_S)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', 
+        (new_sensor['SLAVE_ID'], new_sensor['NODE_ID'], new_sensor['IP'], new_sensor['TEMP'], new_sensor['HUMI'], new_sensor['CO'], 
          new_sensor['PM2_5'], new_sensor['TIME_S'], new_sensor['DATE_S']))
     
     conn.commit()

@@ -19,7 +19,7 @@ html {
     font-size: 16px;   /* cỡ chữ */
     padding: 5px 10px; /* khoảng cách bên trong input */
 }
-#map {
+/* #map {
     height: 250px;
     position: fixed;
     bottom: 0;
@@ -29,4 +29,30 @@ html {
     text-align: center;
     padding: 10px;
     z-index: 100;
+} */
+.chart1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chart2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#co_chart{
+    width: 50%;
+    height: 250px;
+}
+#temp_chart{
+    width: 50%;
+    height: 250px;
+}
+#humi_chart{
+    width: 50%;
+    height: 250px;
+}
+#pm2_5_chart{
+    width: 50%;
+    height: 250px;
 }
