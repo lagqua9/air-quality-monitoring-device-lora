@@ -3,18 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.7.2-web/css/all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <!-- phần để test trc khi vô flask -->
+     <!-- <link rel="stylesheet" href="/project_DATN/static/fontawesome-free-6.7.2-web/css/all.css">
+     <link rel="stylesheet" href="/project_DATN/static/login.css"> -->
     <title>Document</title>
 </head>
 <body>
-    <form>
-        <label>Tên đăng nhập:</label><br>
-        <input type="text" name="username" required><br><br>
+    <form id="login-form">
+        <h2>Đăng nhập</h2>
+        <label for="account">Tài khoản:</label>
+        <i class="fa-solid fa-user"></i>
+        <input type="text" id="account" name="account" required><br>
     
-        <label>Mật khẩu:</label><br>
-        <input type="password" name="password" required><br><br>
-    
-        <input type="submit" value="Đăng nhập">
+        <label for="password">Mật khẩu:</label>
+        <i class="fa-solid fa-key"></i>
+        <input type="password" id="password" name="password" required><br>
+        <div id="response"></div>
+        <button type="submit">Đăng nhập</button>
+        <button type="button" id="signup-btn">Đăng ký</button>
     </form>
-    
+    <form id="singup"  style="display: none;">
+        <h2>Đăng ký</h2>
+    <label for="account">Tài khoản:</label>
+    <i class="fa-solid fa-user"></i>
+    <input type="text" id="signup-account" name="account" required><br>
+
+    <label for="password">Mật khẩu:</label>
+    <i class="fa-solid fa-key"></i>
+    <input type="password" id="signup-password" name="password" required><br>
+
+    <label for="email">Email:</label>
+    <i class="fa-solid fa-envelope"></i>
+    <input type="email" id="signup-email" name="email" required><br>
+
+    <div id="response"></div>
+    <button onclick="login()">Đăng ký</button>
+    <button type="button" id="login-btn">Quay lại đăng nhập</button>
+    </form>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    <!-- <script src="/project_DATN/static/login.js"></script> -->
+        <!-- phần để test trc khi vô flask -->
 </body>
 </html>

@@ -12,6 +12,20 @@ def get_db_connection():
     except sqlite3.Error as e:
         print(f"Error connecting to database: {e}")
         return None  # Nếu kết nối không thành công, trả về None
+    
+def check_credentials(account, password):
+    conn = sqlite3.connect('database.db')  # Kết nối đến cơ sở dữ liệu
+    cursor = conn.cursor()
+
+    # Truy vấn xem tài khoản và mật khẩu có khớp trong bảng không
+    cursor.execute('SELECT * FROM login WHERE account = ? AND password = ?', (account, password))
+    row = cursor.fetchone()
+
+    conn.close()
+
+    if row:
+        return True  # Tìm thấy tài khoản và mật khẩu khớp
+    return False  # Không tìm thấy
 # ================================
 # API GET: Lấy thông tin cảm biến
 # ================================
@@ -103,6 +117,22 @@ def delete_node_sensor(slave_id, node_id):
     conn.close()
     
     return '', 204  # Trả về mã HTTP 204 (No Content) sau khi xóa thành công
+
+
+@app.route('/api/login', methods=['GET'])
+def login():
+    # Lấy tham số 'account' và 'password' từ URL query string
+    account = request.args.get('account')
+    password = request.args.get('password')
+
+    if not account or not password:
+        return jsonify({"error": "Account and password are required"}), 400
+
+    # Kiểm tra tài khoản và mật khẩu trong cơ sở dữ liệu
+    if check_credentials(account, password):
+        return jsonify({"message": "Login successful"}), 200
+    else:
+        return jsonify({"error": "Invalid credentials"}), 401
 
 
 @app.route('/')
